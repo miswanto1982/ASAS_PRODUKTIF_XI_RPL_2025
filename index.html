@@ -390,22 +390,7 @@ document.addEventListener("keydown", e => {
 });
 
 /* ====== KIRIM KE GOOGLE SHEET ====== */
-const scriptURL = "https://script.google.com/macros/s/AKfycbyfibtKVvekQFTQ_C10JnOwxUyGvRBNUldGBGKiJmJHGbddtjHIvKxRkWb1dO95goU1Ng/exec";
-
-document.getElementById("quizForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-
-  fetch(scriptURL, { method: "POST", body: formData })
-    .then(() => {
-      alert("Jawaban berhasil dikirim!");
-      document.exitFullscreen();
-      location.reload();
-    })
-    .catch(err => alert("Gagal mengirim: " + err));
-});
-</script>
-  <script>
+<script>
 const scriptURL = "https://script.google.com/macros/s/AKfycbyfibtKVvekQFTQ_C10JnOwxUyGvRBNUldGBGKiJmJHGbddtjHIvKxRkWb1dO95goU1Ng/exec";
 
 document.getElementById("quizForm").addEventListener("submit", async function(e){
@@ -444,6 +429,7 @@ document.getElementById("quizForm").addEventListener("submit", async function(e)
 </script>
 </body>
 </html>
+
 
 
 
