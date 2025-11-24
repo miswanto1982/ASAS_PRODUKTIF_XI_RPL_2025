@@ -75,31 +75,51 @@ textarea{width:100%;height:60px;border:1px solid #ccc;border-radius:8px;padding:
 <div id="warningOverlay">🚫 Ujian dihentikan! Anda keluar dari mode ujian atau mencoba screenshot.</div>
 
 <div class="wrap hidden" id="quizArea">
-<header>
-  <div style="display:flex;justify-content:space-between;align-items:center;background:#1e8449;color:white;padding:10px 20px;border-bottom:4px solid #0b3d0b;">
-    <img src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/logo_smk.png" style="height:80px;">
-    <div style="text-align:center;flex:1;">
-      <h1 style="margin:0;font-size:24px;">ASESMEN SUMATIF AKHIR SEMESTER</h1>
-      <p style="margin:4px 0;font-size:15px;">Mata Pelajaran: Pemrograman Web dan Perangkat Bergerak</p>
-      <p style="margin:4px 0;font-size:14px;">SMK Negeri 1 Sudimoro - Kompetensi Keahlian RPL</p>
+   <header>
+  <div style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1e8449;
+    color: white;
+    padding: 10px 20px;
+    border-bottom: 4px solid #0b3d0b;
+  ">
+    <!-- Logo kiri -->
+    <img 
+      src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/logo_smk.png" 
+      alt="Logo SMK" 
+      style="height: 80px; width: auto; border-radius: 10px; object-fit: contain;"
+    >
+
+    <!-- Judul Tengah -->
+    <div style="text-align: center; flex: 1; margin: 0 15px;">
+      <h1 style="margin: 0; font-size: 24px;">UJIAN TENGAH SEMESTER</h1>
+      <p style="margin: 4px 0; font-size: 15px;">Mata Pelajaran: Pemrograman Web dan Perangkat Bergerak</p>
+      <p style="margin: 4px 0; font-size: 14px;">SMK Negeri 1 Sudimoro - Kompetensi Keahlian RPL</p>
     </div>
-    <img src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/LOGO_RPL.png" style="height:80px;">
+
+    <!-- Logo kanan -->
+    <img 
+      src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/LOGO_RPL.png" 
+      alt="Logo RPL" 
+      style="height: 80px; width: auto; border-radius: 10px; object-fit: contain;"
+    >
   </div>
 </header>
 
-<form id="quizForm" class="card" method="POST" autocomplete="off" novalidate>
-<section class="info">
-  <label>Nama Lengkap</label>
-  <input name="nama" required><br><br>
-  <label>Kelas</label>
-  <input name="kelas" required><br><br>
-  <label>Tanggal Ujian</label>
-  <input name="tanggal" type="date" required>
-</section>
+  <form id="quizForm" class="card" method="POST" autocomplete="off" novalidate>
+    <section class="info">
+      <label>Nama Lengkap</label>
+      <input name="nama" required><br><br>
+      <label>Kelas</label>
+      <input name="kelas" required><br><br>
+      <label>Tanggal Ujian</label>
+      <input name="tanggal" type="date" required>
+    </section>
 
-<h3 style="margin-top:14px">🧠 Pilihan Ganda (30 Soal)</h3>
-
-<ol>
+      <h3 style="margin-top:14px">🧠 Pilihan Ganda (30 Soal)</h3>
+      <ol>
 <li class="soal"><strong>Tag untuk membuat paragraf dalam HTML adalah...</strong>
   <label><input type="radio" name="soal1" value="a"> a. &lt;head&gt;</label>
   <label><input type="radio" name="soal1" value="b"> b. &lt;body&gt;</label>
@@ -351,87 +371,160 @@ textarea{width:100%;height:60px;border:1px solid #ccc;border-radius:8px;padding:
 <li><textarea name="essay5" placeholder="Sebutkan dan jelaskan 3 properti CSS yang sering digunakan!"></textarea></li>
 </ol>
 
-<button type="submit">Kirim Jawaban</button>
-</form>
+      <div style="display:flex;gap:12px;align-items:center;margin-top:12px">
+        <button id="submitBtn" type="submit">Kirim Jawaban</button>
+        <div class="note">Catatan: Pastikan jawaban Anda sudah benar.</div>
+      </div>
+    </form>
 
-<footer>© 2025 SMK Negeri 1 Sudimoro — RPL</footer>
-</div>
+    <footer><p>© 2025 SMK Negeri 1 Sudimoro | RPL</p></footer>
+  </div>
 
-<!-- ========== SCRIPT ANTI KELUAR, FULLSCREEN, BLOCK SS ========== -->
 <script>
-const startBtn = document.getElementById("startBtn");
-const startScreen = document.getElementById("startScreen");
-const quizArea = document.getElementById("quizArea");
-const warning = document.getElementById("warningOverlay");
+(function(){
+  const startScreen = document.getElementById('startScreen');
+  const startBtn = document.getElementById('startBtn');
+  const quizArea = document.getElementById('quizArea');
+  const overlay = document.getElementById('warningOverlay');
+  const form = document.getElementById('quizForm');
+  const submitBtn = document.getElementById('submitBtn');
 
-startBtn.onclick = async () => {
-  await document.documentElement.requestFullscreen();
-  startScreen.classList.add("hidden");
-  quizArea.classList.remove("hidden");
-};
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxQ_T2Y9rskF9VlxqgBk2jyJeT0VlljLJBBb2CCgDv2vIb_r01wX4d6IhL-osmBaUR_mQ/exec';
 
-document.addEventListener("fullscreenchange", () => {
-  if (!document.fullscreenElement) {
-     warning.style.display="flex";
-     setTimeout(()=>location.reload(),2000);
+  // === Kunci Jawaban ===
+  const kunciJawaban = {
+const kunci = {
+  soal1:'d',
+  soal2:'b',
+  soal3:'b',
+  soal4:'b',
+  soal5:'b',
+  soal6:'b',
+  soal7:'c',
+  soal8:'c',
+  soal9:'c',
+  soal10:'c',
+  soal11:'c',
+  soal12:'a',
+  soal13:'b',
+  soal14:'b',
+  soal15:'c',
+  soal16:'a',
+  soal17:'a',
+  soal18:'a',
+  soal19:'b',
+  soal20:'c',
+  soal21:'a',
+  soal22:'b',
+  soal23:'c',
+  soal24:'b',
+  soal25:'b',
+  soal26:'c',
+  soal27:'a',
+  soal28:'b',
+  soal29:'a',
+  soal30:'b'
+  };
+  function hitungSkor(form){
+    let benar=0;
+    for(let i=1;i<=30;i++){
+      const j=form[`soal${i}`].value;
+      if(j===kunciJawaban[`soal${i}`]) benar++;
+    }
+    return benar*(100/30);
   }
-});
 
-document.addEventListener("keydown", e => {
-  if (e.key === "PrintScreen") {
-    navigator.clipboard.writeText("");
-    alert("Screenshot dilarang!");
+  // === Fullscreen ===
+  function enterFullscreen(){const el=document.documentElement;
+    if(el.requestFullscreen)el.requestFullscreen();
+    else if(el.mozRequestFullScreen)el.mozRequestFullScreen();
+    else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+    else if(el.msRequestFullscreen)el.msRequestFullscreen();
   }
-});
-
-document.addEventListener("contextmenu", e => e.preventDefault());
-document.addEventListener("keydown", e => {
-  if (e.ctrlKey && ["C","V","X","A","S","P"].includes(e.key.toUpperCase())) e.preventDefault();
-});
-
-/* ====== KIRIM KE GOOGLE SHEET ====== */
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbyfibtKVvekQFTQ_C10JnOwxUyGvRBNUldGBGKiJmJHGbddtjHIvKxRkWb1dO95goU1Ng/exec";
-
-document.getElementById("quizForm").addEventListener("submit", async function(e){
-  e.preventDefault();
-
-  const formData = new FormData(this);
-  const data = {};
-
-  formData.forEach((value, key) => { data[key] = value });
-
-  // Ambil semua jawaban PG
-  const jawaban = {};
-  for(let i=1; i<=30; i++){
-    const name = "soal" + i;
-    jawaban[name] = formData.get(name) || "";
+  function exitFullscreenSafe(){
+    if(document.exitFullscreen)document.exitFullscreen();
+    else if(document.mozCancelFullScreen)document.mozCancelFullScreen();
+    else if(document.webkitExitFullscreen)document.webkitExitFullscreen();
   }
 
-  data["jawaban"] = jawaban;
-
-  // Kirim ke Web App
-  const res = await fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" }
+  startBtn.addEventListener('click',()=>{
+    startScreen.classList.add('hidden');
+    quizArea.classList.remove('hidden');
+    enterFullscreen();
   });
 
-  const result = await res.json();
+  // Anti keluar fullscreen / inspect
+  document.addEventListener('fullscreenchange',()=>{
+    if(!document.fullscreenElement){overlay.style.display='flex';setTimeout(()=>location.reload(),2500);}
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='PrintScreen'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key))) {
+      e.preventDefault();
+      overlay.style.display='flex';
+      setTimeout(()=>location.reload(),2000);
+    }
+  });
 
-  if(result.status === "sukses"){
-    alert("Jawaban berhasil dikirim!");
-    window.location.href = "selesai.html"; 
-  } else {
-    alert("Gagal mengirim! " + result.message);
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const skor=hitungSkor(form);
+    const fd=new FormData(form);
+    fd.append('skor',skor);
+    submitBtn.disabled=true;
+    submitBtn.textContent='Mengirim...';
+    fetch(scriptURL,{method:'POST',body:fd})
+      .then(r=>r.text())
+      .then(()=>{
+        alert(`✅ Jawaban berhasil dikirim.\nNilai Anda: ${skor.toFixed(2)}`);
+        exitFullscreenSafe();
+        form.reset();
+        location.reload();
+      })
+      .catch(()=>{
+        alert('❌ Gagal mengirim. Periksa koneksi internet.');
+      })
+      .finally(()=>{
+        submitBtn.disabled=false;
+        submitBtn.textContent='Kirim Jawaban';
+      });
+  });
+})();
+  // === Deteksi Screenshot ===
+window.addEventListener('keyup', function(e) {
+  if (e.key === 'PrintScreen') {
+    navigator.clipboard.writeText('');
+    showWarning('Tindakan screenshot terdeteksi.');
   }
 });
+
+// Blok kombinasi umum screenshot di Windows & macOS
+window.addEventListener('keydown', function(e) {
+  // Windows: Alt + PrintScreen atau Windows + Shift + S
+  if (
+    (e.key === 'PrintScreen') ||
+    (e.ctrlKey && e.key.toLowerCase() === 'p') || // Ctrl + P (print)
+    (e.key.toLowerCase() === 's' && (e.metaKey || e.shiftKey || e.ctrlKey)) // Shift+S, Cmd+S, Ctrl+S
+  ) {
+    e.preventDefault();
+    showWarning('Tindakan screenshot atau simpan layar terdeteksi.');
+  }
+
+  // macOS: Command + Shift + 3/4/5
+  if (e.metaKey && e.shiftKey && ['3', '4', '5'].includes(e.key)) {
+    e.preventDefault();
+    showWarning('Screenshot di Mac terdeteksi.');
+  }
+});
+
+// Tambahan CSS dinamis: layar jadi gelap sebentar saat SC terdeteksi
+function flashBlackScreen() {
+  overlay.style.display = 'flex';
+  overlay.textContent = '🚫 Screenshot terdeteksi! Ujian dihentikan.';
+  overlay.style.background = 'black';
+  setTimeout(()=>exitFullscreenSafe(), 800);
+  quizArea.style.display='none';
+}
 </script>
 </body>
+
 </html>
-
-
-
-
-
-
