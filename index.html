@@ -117,6 +117,18 @@ textarea{width:100%;height:60px;border:1px solid #ccc;border-radius:8px;padding:
       <label>Tanggal Ujian</label>
       <input name="tanggal" type="date" required>
     </section>
+    <div id="timer" style="
+  font-size:18px;
+  font-weight:bold;
+  color:#c0392b;
+  background:#fdecea;
+  padding:8px 15px;
+  border-radius:8px;
+  width:max-content;
+  margin:10px auto;
+  display:none;">
+  Waktu: 60:00
+</div>
 
       <h3 style="margin-top:14px">🧠 Pilihan Ganda (30 Soal)</h3>
       <ol>
@@ -446,11 +458,12 @@ textarea{width:100%;height:60px;border:1px solid #ccc;border-radius:8px;padding:
     else if(document.webkitExitFullscreen)document.webkitExitFullscreen();
   }
 
-  startBtn.addEventListener('click',()=>{
+ startBtn.addEventListener('click',()=>{
     startScreen.classList.add('hidden');
     quizArea.classList.remove('hidden');
     enterFullscreen();
-  });
+    mulaiTimer();   // ← Timer aktif
+});
 
   // Anti keluar fullscreen / inspect
   document.addEventListener('fullscreenchange',()=>{
@@ -529,11 +542,44 @@ function flashBlackScreen() {
   overlay.textContent = '🚫 ' + msg;
   setTimeout(() => location.reload(), 2000);
 }
+// === TIMER 60 MENIT ===
+let timerInterval;
+let totalSeconds = 60 * 60; // 60 menit
+
+function mulaiTimer() {
+  const timerDisplay = document.getElementById('timer');
+  timerDisplay.style.display = 'block';
+
+  timerInterval = setInterval(() => {
+    totalSeconds--;
+
+    let menit = Math.floor(totalSeconds / 60);
+    let detik = totalSeconds % 60;
+
+    // Tampilan 2 digit
+    if (detik < 10) detik = '0' + detik;
+    if (menit < 10) menit = '0' + menit;
+
+    timerDisplay.textContent = `Waktu: ${menit}:${detik}`;
+
+    // Jika waktu habis → otomatis submit
+    if (totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = "Waktu Habis!";
+
+      alert("⏰ Waktu ujian telah habis. Jawaban Anda dikirim otomatis.");
+
+      // Kirim otomatis
+      submitBtn.click();
+    }
+  }, 1000);
+}
 
 </script>
 </body>
 
 </html>
+
 
 
 
