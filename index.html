@@ -75,31 +75,30 @@ textarea{width:100%;height:60px;border:1px solid #ccc;border-radius:8px;padding:
 <div id="warningOverlay">🚫 Ujian dihentikan! Anda keluar dari mode ujian atau mencoba screenshot.</div>
 
 <div class="wrap hidden" id="quizArea">
-   <header>
+<header>
   <div style="display:flex;justify-content:space-between;align-items:center;background:#1e8449;color:white;padding:10px 20px;border-bottom:4px solid #0b3d0b;">
-    <img src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/logo_smk.png" alt="Logo SMK" style="height:80px;width:auto;border-radius:10px;object-fit:contain;">
-    <div style="text-align:center;flex:1;margin:0 15px;">
+    <img src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/logo_smk.png" style="height:80px;">
+    <div style="text-align:center;flex:1;">
       <h1 style="margin:0;font-size:24px;">ASESMEN SUMATIF AKHIR SEMESTER</h1>
       <p style="margin:4px 0;font-size:15px;">Mata Pelajaran: Pemrograman Web dan Perangkat Bergerak</p>
       <p style="margin:4px 0;font-size:14px;">SMK Negeri 1 Sudimoro - Kompetensi Keahlian RPL</p>
     </div>
-    <img src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/LOGO_RPL.png" alt="Logo RPL" style="height:80px;width:auto;border-radius:10px;object-fit:contain;">
+    <img src="https://raw.githubusercontent.com/miswanto1982/UTS_PWPB_2025/main/LOGO_RPL.png" style="height:80px;">
   </div>
 </header>
 
-  <form id="quizForm" class="card" method="POST" autocomplete="off" novalidate>
-    <section class="info">
-      <label>Nama Lengkap</label>
-      <input name="nama" required><br><br>
-      <label>Kelas</label>
-      <input name="kelas" required><br><br>
-      <label>Tanggal Ujian</label>
-      <input name="tanggal" type="date" required>
-    </section>
+<form id="quizForm" class="card" method="POST" autocomplete="off" novalidate>
+<section class="info">
+  <label>Nama Lengkap</label>
+  <input name="nama" required><br><br>
+  <label>Kelas</label>
+  <input name="kelas" required><br><br>
+  <label>Tanggal Ujian</label>
+  <input name="tanggal" type="date" required>
+</section>
 
 <h3 style="margin-top:14px">🧠 Pilihan Ganda (30 Soal)</h3>
-<ol>
-<!-- ===== Soal 1–30 ===== -->
+
 <ol>
 <li class="soal"><strong>Tag untuk membuat paragraf dalam HTML adalah...</strong>
   <label><input type="radio" name="soal1" value="a"> a. &lt;head&gt;</label>
@@ -323,112 +322,91 @@ textarea{width:100%;height:60px;border:1px solid #ccc;border-radius:8px;padding:
   <label><input type="radio" name="soal28" value="e"> e. shadow-text</label>
 </li>
 
-<li class="soal"><strong>Tag HTML yang digunakan untuk menampilkan konten utama adalah...</strong>
-  <label><input type="radio" name="soal29" value="a"> a. &lt;body&gt;</label>
-  <label><input type="radio" name="soal29" value="b"> b. &lt;main&gt;</label>
-  <label><input type="radio" name="soal29" value="c"> c. &lt;section&gt;</label>
-  <label><input type="radio" name="soal29" value="d"> d. &lt;content&gt;</label>
-  <label><input type="radio" name="soal29" value="e"> e. &lt;article&gt;</label>
+<!-- ==== Soal 29 ==== -->
+<li class="soal"><strong>Elemen HTML yang digunakan untuk membungkus bagian navigasi adalah...</strong>
+  <label><input type="radio" name="soal29" value="a"> a. &lt;nav&gt;</label>
+  <label><input type="radio" name="soal29" value="b"> b. &lt;menu&gt;</label>
+  <label><input type="radio" name="soal29" value="c"> c. &lt;header&gt;</label>
+  <label><input type="radio" name="soal29" value="d"> d. &lt;aside&gt;</label>
+  <label><input type="radio" name="soal29" value="e"> e. &lt;section&gt;</label>
 </li>
 
-<li class="soal"><strong>File CSS eksternal disimpan dengan ekstensi...</strong>
-  <label><input type="radio" name="soal30" value="a"> a. .html</label>
-  <label><input type="radio" name="soal30" value="b"> b. .txt</label>
-  <label><input type="radio" name="soal30" value="c"> c. .css</label>
-  <label><input type="radio" name="soal30" value="d"> d. .style</label>
-  <label><input type="radio" name="soal30" value="e"> e. .js</label>
+<!-- ==== Soal 30 ==== -->
+<li class="soal"><strong>Properti CSS yang mengatur jarak antar baris teks adalah...</strong>
+  <label><input type="radio" name="soal30" value="a"> a. letter-spacing</label>
+  <label><input type="radio" name="soal30" value="b"> b. line-height</label>
+  <label><input type="radio" name="soal30" value="c"> c. text-indent</label>
+  <label><input type="radio" name="soal30" value="d"> d. spacing</label>
+  <label><input type="radio" name="soal30" value="e"> e. word-spacing</label>
 </li>
 
-</li>
 </ol>
 
-<h3 style="margin-top:14px">📝 Soal Essay (5 Soal)</h3>
-<ol start="31">
-  <li><label>Apa tujuan utama penggunaan CSS dalam pembuatan halaman web?</label><textarea name="essay1" required></textarea></li>
-  <li><label>Sebutkan dan jelaskan fungsi dari tag &lt;body&gt; pada HTML!</label><textarea name="essay2" required></textarea></li>
-  <li><label>Tuliskan 3 contoh properti CSS yang digunakan untuk mengatur tampilan gambar!</label><textarea name="essay3" required></textarea></li>
-  <li><label>Jelaskan perbedaan antara penggunaan CSS internal dan inline!</label><textarea name="essay4" required></textarea></li>
-  <li><label>Apa fungsi atribut "src" pada tag &lt;img&gt; dan bagaimana cara penggunaannya?</label><textarea name="essay5" required></textarea></li>
+<h3>📝 Essay (5 Soal)</h3>
+<ol>
+<li><textarea name="essay1" placeholder="Jelaskan perbedaan antara tag &lt;div&gt; dan &lt;section&gt;!"></textarea></li>
+<li><textarea name="essay2" placeholder="Apa fungsi atribut alt pada tag &lt;img&gt;?"></textarea></li>
+<li><textarea name="essay3" placeholder="Jelaskan cara menautkan file CSS eksternal ke HTML!"></textarea></li>
+<li><textarea name="essay4" placeholder="Apa yang dimaksud dengan responsive web design?"></textarea></li>
+<li><textarea name="essay5" placeholder="Sebutkan dan jelaskan 3 properti CSS yang sering digunakan!"></textarea></li>
 </ol>
-<div style="display:flex;gap:12px;align-items:center;margin-top:12px">
-  <button id="submitBtn" type="submit">Kirim Jawaban</button>
-  <div class="note">Catatan: Pastikan jawaban Anda sudah benar.</div>
-</div>
+
+<button type="submit">Kirim Jawaban</button>
 </form>
 
-<footer><p>© 2025 SMK Negeri 1 Sudimoro | RPL</p></footer>
+<footer>© 2025 SMK Negeri 1 Sudimoro — RPL</footer>
 </div>
 
+<!-- ========== SCRIPT ANTI KELUAR, FULLSCREEN, BLOCK SS ========== -->
 <script>
-(function(){
-  const startScreen=document.getElementById('startScreen');
-  const startBtn=document.getElementById('startBtn');
-  const quizArea=document.getElementById('quizArea');
-  const overlay=document.getElementById('warningOverlay');
-  const form=document.getElementById('quizForm');
-  const submitBtn=document.getElementById('submitBtn');
+const startBtn = document.getElementById("startBtn");
+const startScreen = document.getElementById("startScreen");
+const quizArea = document.getElementById("quizArea");
+const warning = document.getElementById("warningOverlay");
 
-  const scriptURL='https://script.google.com/macros/s/AKfycbyqGYQB274SS2w07k2CrhhixzJ1nIOFpDnsxRCpfNrgGOQVgABrGpTVD516Gu0dNb90qQ/exec';
+startBtn.onclick = async () => {
+  await document.documentElement.requestFullscreen();
+  startScreen.classList.add("hidden");
+  quizArea.classList.remove("hidden");
+};
 
-  // === Kunci Jawaban ===
-  const kunciJawaban={
-    soal1:'d',soal2:'b',soal3:'b',soal4:'b',soal5:'b',
-    soal6:'b',soal7:'c',soal8:'c',soal9:'c',soal10:'c',
-    soal11:'c',soal12:'b',soal13:'b',soal14:'c',soal15:'a',
-    soal16:'a',soal17:'c',soal18:'a',soal19:'b',soal20:'c',
-    soal21:'a',soal22:'b',soal23:'e',soal24:'a',soal25:'b',
-    soal26:'b',soal27:'a',soal28:'b',soal29:'d',soal30:'a'
-  };
-
-  function hitungSkor(form){
-    let benar=0;
-    for(let i=1;i<=30;i++){
-      const j=form[`soal${i}`].value;
-      if(j===kunciJawaban[`soal${i}`]) benar++;
-    }
-    return benar*(100/30);
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement) {
+     warning.style.display="flex";
+     setTimeout(()=>location.reload(),2000);
   }
+});
 
-  function enterFullscreen(){const el=document.documentElement;
-    if(el.requestFullscreen)el.requestFullscreen();
+document.addEventListener("keydown", e => {
+  if (e.key === "PrintScreen") {
+    navigator.clipboard.writeText("");
+    alert("Screenshot dilarang!");
   }
+});
 
-  function exitFullscreenSafe(){if(document.exitFullscreen)document.exitFullscreen();}
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey && ["C","V","X","A","S","P"].includes(e.key.toUpperCase())) e.preventDefault();
+});
 
-  startBtn.addEventListener('click',()=>{
-    startScreen.classList.add('hidden');
-    quizArea.classList.remove('hidden');
-    enterFullscreen();
-  });
+/* ====== KIRIM KE GOOGLE SHEET ====== */
+const scriptURL = "https://script.google.com/macros/s/AKfycbyqGYQB274SS2w07k2CrhhixzJ1nIOFpDnsxRCpfNrgGOQVgABrGpTVD516Gu0dNb90qQ/exec";
 
-  document.addEventListener('fullscreenchange',()=>{
-    if(!document.fullscreenElement){overlay.style.display='flex';setTimeout(()=>location.reload(),2500);}
-  });
+document.getElementById("quizForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
 
-  document.addEventListener('keydown',e=>{
-    if(e.key==='PrintScreen'||(e.ctrlKey&&e.key==='u')||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key))) {
-      e.preventDefault();overlay.style.display='flex';setTimeout(()=>location.reload(),2000);
-    }
-  });
-
-  form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const skor=hitungSkor(form);
-    const fd=new FormData(form);
-    fd.append('skor',skor);
-    submitBtn.disabled=true;submitBtn.textContent='Mengirim...';
-    fetch(scriptURL,{method:'POST',body:fd})
-      .then(r=>r.text())
-      .then(()=>{
-        alert(`✅ Jawaban berhasil dikirim.\nNilai Anda: ${skor.toFixed(2)}`);
-        exitFullscreenSafe();form.reset();location.reload();
-      })
-      .catch(()=>{alert('❌ Gagal mengirim. Periksa koneksi internet.');})
-      .finally(()=>{submitBtn.disabled=false;submitBtn.textContent='Kirim Jawaban';});
-  });
-})();
+  fetch(scriptURL, { method: "POST", body: formData })
+    .then(() => {
+      alert("Jawaban berhasil dikirim!");
+      document.exitFullscreen();
+      location.reload();
+    })
+    .catch(err => alert("Gagal mengirim: " + err));
+});
 </script>
 </body>
 </html>
+
 
 
